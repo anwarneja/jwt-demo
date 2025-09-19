@@ -1,8 +1,6 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
-
-
+const  {loginruth}=require("../controllers/authController")
 
 const posts=[
     {title:"quran",
@@ -14,10 +12,7 @@ const posts=[
 }
 ]
 
-router.get('/post',(req,res)=>{
-   res.json(posts);
-   console.log(req.body);
-})
+router.get('/post',loginruth);
 
 router.post('/login',(req,res)=>{
     //authenticate user
