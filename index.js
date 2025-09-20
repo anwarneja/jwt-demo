@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const authRoutes = require('./routes/authRoutes');
-const  jwt = require('jsonwebtoken');
+const dotenv=require('dotenv');
 
 app.use(express.json());
 
+dotenv.config();
 
 app.use('/jwt', authRoutes);
 
