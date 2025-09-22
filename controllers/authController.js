@@ -27,5 +27,7 @@ exports.post=async(req,res)=>{
         content:"holy book"
         }
      ]
-    res.json(post);
+    res.json({post,
+        "loogedinuser":req.user
+    });
 }
