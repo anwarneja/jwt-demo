@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 
 exports.loginruth =async (req, res) =>{
     //authenticate user
-const {username,age}=req.body;
+const {name,age}=req.body;
 
-const user={name:username,
+const user={name:name,
     age
 } ;
 

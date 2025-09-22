@@ -8,18 +8,14 @@
 
 exports.verifytoken=(req,res,next)=>{
     const authheader=req.headers['authorization'];
-    const token=authheader && authheader.split('')[0];
+    const  token=authheader && authheader.split('')[0];
 
 
-    if(token==null){
-        return res.sendStatus(401);
-    }
+    if(!token)return res.sendStatus(401); //unauthorized
 
-    jwt.verify(token,process.env.ACCESTOKEN,(err,user)=>{
-        if(err){
-            return res.sendStatus(403);
-        }
-        req.user=user;
-        next();
+    jwt.verify(token,process.env.ACCESTOKEN)
+    
+
+
     })
 }
