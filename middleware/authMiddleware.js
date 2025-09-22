@@ -13,9 +13,13 @@ exports.verifytoken=(req,res,next)=>{
 
     if(!token)return res.sendStatus(401); //unauthorized
 
-    jwt.verify(token,process.env.ACCESTOKEN)
+    jwt.verify(token,process.env.ACCESTOKEN,(err,decoded));
+    if(err) return res.sendStatus(403); // Forbidden if invalid
+req.user=decoded;
+next();
+
+
+
+
     
-
-
-    })
 }
