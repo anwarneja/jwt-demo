@@ -14,6 +14,8 @@ exports.loginruth = async (req, res) => {
   res.json({ accestoken: accestoken, user });
 };
 
+//acess token adding in here
+
 exports.post = async (req, res) => {
   const post = [
     {
