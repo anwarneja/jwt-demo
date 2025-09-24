@@ -13,6 +13,9 @@ exports.loginruth = async (req, res) => {
   });
 
   // refresh token
+   const refreshToken = jwt.sign(user, process.env.REFRESHTOKEN, { expiresIn: "7d" }); // long-lived
+
+   
   res.json({ accestoken: accestoken, user });
 };
 
