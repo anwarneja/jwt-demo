@@ -11,6 +11,8 @@ exports.loginruth = async (req, res) => {
   const accestoken = jwt.sign(user, process.env.ACCESTOKEN, {
     expiresIn: "2h",
   });
+
+  // refresh token
   res.json({ accestoken: accestoken, user });
 };
 
