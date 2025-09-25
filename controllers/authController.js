@@ -9,9 +9,9 @@ exports.loginruth = async (req, res) => {
   const user = { name: name, userage: age };
 
   const accestoken = jwt.sign(user, process.env.ACCESTOKEN, {
-    expiresIn: "2h",
+    expiresIn: "5m",
   });
-
+ 
   // refresh token
    const refreshToken = jwt.sign(user, process.env.REFRESHTOKEN, { expiresIn: "7d" }); // long-lived
 
@@ -29,17 +29,19 @@ exports.refreshToken=async(req,res)=>{
  jwt.verify(token,process.env.REFRESHTOKEN,(err,decoded)=>{
 
    const {name,userage}=decoded;
- })
+     console.log(name, userage); // or perform some operations based on the extracted values
+
 
 
    //create another accestoken
-const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn:"3hr"});
+const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn:"3m"});
 
 
     res.json({NEWacesstoken:newacesstoken});
    
  
 
+ })
 
      
 }
@@ -59,3 +61,13 @@ exports.post = async (req, res) => {
   res.json({ post:userposts,//optional
      loogedinuser: req.user.name });
 };
+
+
+
+
+//acess 
+//  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODgwMzIxMCwiZXhwIjoxNzU4ODEwNDEwfQ.JgRd_5g40WAkbkiEpJF8UNgLzPDX75_NGkvFfka91rU
+
+
+//refresh
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODgwMzIxMCwiZXhwIjoxNzU5NDA4MDEwfQ.k5Otmt1YhKFxsPFLcocw9T-hA35xWlecK9eaAY7gZXw
