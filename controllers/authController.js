@@ -21,6 +21,28 @@ exports.loginruth = async (req, res) => {
   REFRESHTOKEN:refreshToken });
 };
 
+// 🔹 New endpoint: generate new access token using refresh token
+exports.refreshToken=async(req,res)=>{
+  const {token}=req.body;
+  if(!token) return res.sendStatus(401); //no token sent
+
+ jwt.verify(token,process.env.REFRESHTOKEN,(err,decoded)=>{
+
+   const {name,userage}=decoded;
+ })
+
+
+   //create another accestoken
+const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn:"3hr"});
+
+
+    res.json({NEWacesstoken:newacesstoken});
+   
+ 
+
+
+     
+}
 
 
 exports.post = async (req, res) => {
