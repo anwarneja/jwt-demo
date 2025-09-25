@@ -53,13 +53,13 @@ exports.post = async (req, res) => {
       name: "anwar",
       content: "holy book",
     },
-    { name: "ilham", content: "sunnah book" },
+    { name: "yelgoche enat yene fifkir", content: "sunnah book" },
     { name: "fatima", content: "hadith notes" },
   ];
   const userposts=post.filter(p=>p.name===req.user.name)
 
   res.json({ post:userposts,//optional
-     loogedinuser: req.user.name });
+     loogedinuser: req.user});
 };
 
 
