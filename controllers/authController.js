@@ -16,7 +16,9 @@ exports.loginruth = async (req, res) => {
    const refreshToken = jwt.sign(user, process.env.REFRESHTOKEN, { expiresIn: "7d" }); // long-lived
 
 
-  res.json({ accestoken: accestoken, user });
+  res.json({ accestoken: accestoken, 
+    user,
+  REFRESHTOKEN:refreshToken });
 };
 
 
