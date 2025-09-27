@@ -51,7 +51,7 @@ exports.post = async (req, res) => {
   const post = [
     {
       name: "anwar",
-      content: "holy book",
+      content: "holy book"
     },
     { name: "yelgoche enat yene fifkir", content: "sunnah book" },
     { name: "fatima", content: "hadith notes" },
