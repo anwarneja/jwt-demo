@@ -47,20 +47,20 @@ const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn
 }
 
 
-exports.post = async (req, res) => {
-  const post = [
-    {
-      name: "anwar",
-      content: "holy book"
-    },
-    { name: "yelgoche enat yene fifkir", content: "sunnah book" },
-    { name: "fatima", content: "hadith notes" },
-  ];
-  const userposts=post.filter(p=>p.name===req.user.name)
+// exports.post = async (req, res) => {
+//   const post = [
+//     {
+//       name: "anwar",
+//       content: "holy book"
+//     },
+//     { name: "yelgoche enat yene fifkir", content: "sunnah book" },
+//     { name: "fatima", content: "hadith notes" },
+//   ];
+//   const userposts=post.filter(p=>p.name===req.user.name)
 
-  res.json({ post:userposts,//optional
-     loogedinuser: req.user});
-};
+//   res.json({ post:userposts,//optional
+//      loogedinuser: req.user});
+// };
 
 
 
