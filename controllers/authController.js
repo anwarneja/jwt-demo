@@ -9,7 +9,7 @@ exports.loginruth = async (req, res) => {
   const user = { name: name, userage: age };
 
   const accestoken = jwt.sign(user, process.env.ACCESTOKEN, {
-    expiresIn: "5m",
+    expiresIn: "1m",
   });
  
   // refresh token
@@ -66,8 +66,8 @@ const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn
 
 
 //acess 
-//  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODgwMzIxMCwiZXhwIjoxNzU4ODEwNDEwfQ.JgRd_5g40WAkbkiEpJF8UNgLzPDX75_NGkvFfka91rU
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODk3NDAwMCwiZXhwIjoxNzU4OTc0MDYwfQ.YgYUnwXA4GdHcky0OjSRHJMYHX1sAOUhyAX-T2BZuzM
 
 
 //refresh
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODgwMzIxMCwiZXhwIjoxNzU5NDA4MDEwfQ.k5Otmt1YhKFxsPFLcocw9T-hA35xWlecK9eaAY7gZXw
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODk3NDAwMCwiZXhwIjoxNzU5NTc4ODAwfQ.bxDKSax5C03dBM9z31ZpLqg9awQq_gEiG2BwNkS1-HI

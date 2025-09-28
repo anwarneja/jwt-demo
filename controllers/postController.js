@@ -15,5 +15,5 @@ exports.getPosts=async(req,res)=>{
 const userposts=post.filter(p=>p.name===req.user.name)
 
   res.json({ post:userposts,//optional
-     loogedinuser: req.user});
+     loogedinuser: req.user.name});
 };
