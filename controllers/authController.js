@@ -33,14 +33,14 @@ exports.refreshToken=async(req,res)=>{
   if(!refreshTokens.includes(token)) return res.sendStatus(403); //not in store
 
  jwt.verify(token,process.env.REFRESHTOKEN,(err,decoded)=>{
-
+ 
    const {name,userage}=decoded;
      console.log(name, userage); // or perform some operations based on the extracted values
 
-
+          
 
    //create another accestoken
-const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn:"3m"});
+const newacesstoken=   jwt.sign({name,userage},process.env.ACCESTOKEN,{expiresIn:"3m"});
 
 
     res.json({NEWacesstoken:newacesstoken});
@@ -88,4 +88,4 @@ exports.logout=async(req,res)=>{
 
 
 //refresh
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWVsZ29jaGUgZW5hdCB5ZW5lIGZpZmtpciIsInVzZXJhZ2UiOiIyNSIsImlhdCI6MTc1ODk3NDAwMCwiZXhwIjoxNzU5NTc4ODAwfQ.bxDKSax5C03dBM9z31ZpLqg9awQq_gEiG2BwNkS1-HI
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW53YXIiLCJ1c2VyYWdlIjoiMjIiLCJpYXQiOjE3NTkwNTc0OTcsImV4cCI6MTc1OTY2MjI5N30.aQSscZ3hjY6_CtpLP3StV40CwGvzP1YL0ucxAFbGflU
