@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
+let refreshTokens=[]; // temporary storage
+
 exports.loginruth = async (req, res) => {
   //authenticate user
   const { name, age } = req.body;
@@ -15,6 +17,7 @@ exports.loginruth = async (req, res) => {
   // refresh token
    const refreshToken = jwt.sign(user, process.env.REFRESHTOKEN, { expiresIn: "7d" }); // long-lived
 
+ refreshTokens.push(refreshToken);    // store refresh token
 
   res.json({ accestoken: accestoken, 
     user,
@@ -25,6 +28,9 @@ exports.loginruth = async (req, res) => {
 exports.refreshToken=async(req,res)=>{
   const {token}=req.body;
   if(!token) return res.sendStatus(401); //no token sent
+  
+  //This belw one code allows us to Only accept refresh tokens that exist in our refreshTokens array.
+  if(!refreshTokens.includes(token)) return res.sendStatus(403); //not in store
 
  jwt.verify(token,process.env.REFRESHTOKEN,(err,decoded)=>{
 
@@ -44,6 +50,18 @@ const newacesstoken=   jwt.sign({name,userage},process.env.accestoken,{expiresIn
  })
 
      
+}
+
+//looged out request
+exports.logout=async(req,res)=>{
+  const {token}=req.body;
+  if(!token) return res.sendStatus(401); //no token
+
+  refreshTokens=refreshTokens.filter((selecter)=>selecter!==token)
+
+  res.json({message:"looged out succesfully!"})
+
+
 }
 
 
