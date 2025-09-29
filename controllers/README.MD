@@ -122,5 +122,6 @@ Logout removes the refresh token (cannot generate new access token anymore)
 This project is licensed under the MIT License – free to use and modify.
 
 📌 Author
+
 👨‍💻 Developed by Anwar Neja
 🌐 Portfolio | GitHub | LinkedIn
